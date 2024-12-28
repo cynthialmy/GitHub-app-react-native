@@ -73,4 +73,6 @@ yarn-error.log
 !.yarn/sdks
 !.yarn/versions
 
+# Environment and sensitive files
 .env
+src/config/github.ts
