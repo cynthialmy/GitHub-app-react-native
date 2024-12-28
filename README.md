@@ -1,79 +1,126 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# GitHub Repository Manager
 
-# Getting Started
+A React Native application that allows you to view and manage your GitHub repositories using GitHub's GraphQL API.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Features
 
-## Step 1: Start the Metro Server
+- View your GitHub profile information
+- List your repositories
+- Edit repository names
+- Real-time updates using Apollo Client
+- Native iOS and Android support
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Prerequisites
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Before you begin, ensure you have installed:
+- [Node.js](https://nodejs.org/) (>= 18)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [React Native development environment](https://reactnative.dev/docs/environment-setup)
+- [Xcode](https://developer.apple.com/xcode/) (for iOS development)
+- [Android Studio](https://developer.android.com/studio) (for Android development)
 
+## Setup
+
+1. Clone the repository:
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+git clone https://github.com/cynthialmy/GitHub-app-react-native.git
+cd GitHub-app-react-native
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
+2. Install dependencies:
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+npm install
 ```
 
-### For iOS
+3. Create a GitHub Personal Access Token:
+   - Go to [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens)
+   - Generate a new token with the following permissions:
+     - `repo`
+     - `read:user`
+     - `user:email`
 
+4. Configure your token:
+   - Create `src/config/github.ts`
+   - Add your token:
+   ```typescript
+   export const GITHUB_TOKEN = 'your_github_token_here';
+   ```
+
+5. Install iOS dependencies (iOS only):
 ```bash
-# using npm
+cd ios
+pod install
+cd ..
+```
+
+## Running the App
+
+### iOS
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### Android
+```bash
+npm run android
+```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Project Structure
 
-## Step 3: Modifying your App
+```
+src/
+├── apollo/
+│   └── client.ts         # Apollo Client configuration
+├── components/
+│   ├── GitHubProfile.tsx # Profile and repository list component
+│   └── RepoItem.tsx      # Repository item component with edit functionality
+└── config/
+    └── github.ts         # GitHub configuration (token)
+```
 
-Now that you have successfully run the app, let's modify it.
+## Available Scripts
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+- `npm start` - Start the Metro bundler
+- `npm run ios` - Run the iOS app
+- `npm run android` - Run the Android app
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+## Troubleshooting
 
-## Congratulations! :tada:
+If you encounter any issues:
 
-You've successfully run and modified your React Native App. :partying_face:
+1. Clear Metro bundler cache:
+```bash
+npm start -- --reset-cache
+```
 
-### Now what?
+2. For iOS issues:
+```bash
+cd ios
+pod install
+cd ..
+```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+3. For Android issues:
+   - Open Android Studio
+   - Clean and rebuild the project
+   - Sync Gradle files
 
-# Troubleshooting
+## Contributing
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-# Learn More
+## License
 
-To learn more about React Native, take a look at the following resources:
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Acknowledgments
+
+- [React Native](https://reactnative.dev/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [GitHub GraphQL API](https://docs.github.com/en/graphql)
