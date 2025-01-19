@@ -24,7 +24,7 @@ Before you begin, ensure you have installed:
 1. Clone the repository:
 ```bash
 git clone https://github.com/cynthialmy/GitHub-app-react-native.git
-cd GitHub-app-react-native
+cd GitHubApp
 ```
 
 2. Install dependencies:
@@ -40,10 +40,10 @@ npm install
      - `user:email`
 
 4. Configure your token:
-   - Create `src/config/github.ts`
+   - Create `.env` file in the root directory
    - Add your token:
-   ```typescript
-   export const GITHUB_TOKEN = 'your_github_token_here';
+   ```
+   GITHUB_TOKEN=your_github_token_here
    ```
 
 5. Install iOS dependencies (iOS only):
@@ -55,12 +55,41 @@ cd ..
 
 ## Running the App
 
-### iOS
+### On iOS Simulator
 ```bash
 npm run ios
 ```
 
-### Android
+### On Physical iOS Device
+
+1. Open the project in Xcode:
+```bash
+cd ios
+open GitHubApp.xcworkspace
+```
+
+2. In Xcode:
+   - Connect your iPhone to your Mac via USB
+   - Sign in to your Apple ID (Xcode > Preferences > Accounts)
+   - Select the "GitHubApp" target
+   - Under "Signing & Capabilities":
+     - Check "Automatically manage signing"
+     - Select your Team (your Apple ID)
+     - Update Bundle Identifier to something unique (e.g., "com.yourname.githubapp")
+
+3. Trust the developer profile on your iPhone:
+   - Go to Settings > General > Device Management
+   - Find your Apple ID
+   - Tap "Trust"
+
+4. Run the app:
+```bash
+# Either through Xcode by clicking the Play button
+# Or through the terminal:
+npm run ios --device "Your iPhone Name"
+```
+
+### On Android
 ```bash
 npm run android
 ```
@@ -95,12 +124,19 @@ If you encounter any issues:
 npm start -- --reset-cache
 ```
 
-2. For iOS issues:
-```bash
-cd ios
-pod install
-cd ..
-```
+2. For iOS device deployment issues:
+   - Make sure your iPhone is unlocked
+   - Trust the developer certificate on your device
+   - Clean the build in Xcode (Product > Clean Build Folder)
+   - Delete derived data in Xcode (Window > Projects > Click arrow next to project > Delete derived data)
+   - Try rebuilding:
+   ```bash
+   cd ios
+   pod deintegrate
+   pod install
+   cd ..
+   npm run ios --device
+   ```
 
 3. For Android issues:
    - Open Android Studio
