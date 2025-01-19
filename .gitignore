@@ -75,4 +75,4 @@ yarn-error.log
 
 # Environment and sensitive files
 .env
-src/config/github.ts
+.env.*

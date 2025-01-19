@@ -9,7 +9,7 @@ module.exports = {
         blacklist: null,
         whitelist: null,
         safe: false,
-        allowUndefined: false,
+        allowUndefined: true,
       },
     ],
   ],
