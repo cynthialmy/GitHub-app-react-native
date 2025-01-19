@@ -1,2 +1,2 @@
 // Replace this with your actual GitHub token
-export const GITHUB_TOKEN = 'ghp_1234567890';
+export const GITHUB_TOKEN = 'your_github_token_here';
