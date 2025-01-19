@@ -25,6 +25,8 @@ interface RepoItemProps {
     id: string;
     name: string;
     description?: string;
+    createdAt: string;
+    updatedAt: string;
   };
   onRefetch: () => void;
 }
